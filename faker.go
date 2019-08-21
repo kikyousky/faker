@@ -347,7 +347,7 @@ func getValue(a interface{}) (reflect.Value, error) {
 	case reflect.Struct:
 		switch t.String() {
 		case "time.Time":
-			ft := time.Now().Add(time.Duration(rand.Int63()))
+			ft := time.Unix(int64(rand.Int31()), 0)
 			return reflect.ValueOf(ft), nil
 		default:
 			originalDataVal := reflect.ValueOf(a)
